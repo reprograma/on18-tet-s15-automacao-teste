@@ -1,0 +1,16 @@
+{
+  "name": "introducao",
+  "version": "1.0.0",
+  "main": "calculadora.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.3.1"
+  },
+  "devDependencies": {},
+  "description": ""
+}
