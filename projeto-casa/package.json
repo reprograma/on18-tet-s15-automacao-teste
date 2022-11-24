@@ -1,0 +1,27 @@
+{
+  "name": "projeto-casa",
+  "version": "1.0.0",
+  "description": "- 1. Copie um projeto de semanas anteriores ou crie uma API nova.\r - 2. Faça ao menos 5 testes end to end para a API\r ---",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.2",
+    "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "supertest": "^6.3.1"
+  }
+}
