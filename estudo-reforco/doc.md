@@ -2,7 +2,7 @@
 
 ## RESUMO:
 
-* quando eu crio um arquivo .spec serve para a nossa ferramente de teste (jest) entender que este arquivo é um arquivo de teste
+* quando eu crio um arquivo .spec serve para a nossa ferramenta de teste (jest) entender que este arquivo é um arquivo de teste
 * .spec em si significa que é um teste unitário
 * se fosse calculadora.test.js significa teste de integração
 * Posso fazer teste unitário em .test, mas é uma questão de boa prática e isso pode variar
@@ -32,10 +32,20 @@ it("should som a + b and return the result", ()=>{})
 //o caminho de onde o teste está rodadando
     ]
   }
+ 
 
 
 * No script, depois de dev:
 "test": "jest --forceExit"
 // para a gente não precisar ficar quebrando depois de um erro. 
 },
+ "test": "jest --forceExit --coverage
 
+
+ 
+* Coverage
+cobertura de teste
+para quem quiser fazer testes no bando de dados é necessário ter as duas configurações de: jest.setup e no package.json a parte do jest.
+
+* .env.test
+onde eu guardo a porta e uri de test
