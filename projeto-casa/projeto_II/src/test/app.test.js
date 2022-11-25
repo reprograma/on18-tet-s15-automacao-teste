@@ -6,7 +6,7 @@ describe('Cozinha Controller', () => {
 
     const cozinhaMock = {
         nome: "Cozinha teste",
-        cnpj: 12345678,
+        cnpj: 123456789,
         telefone:"12345678",
         endereco: {
             cep: "123",
@@ -26,6 +26,11 @@ describe('Cozinha Controller', () => {
 
         cozinhaMock.id = newCozinha._id
     })
+
+    afterAll(async () => {
+        await model.deleteMany() //deletar muitos
+    })
+
     test('GET /cozinhas/buscar', (done) => {
         request(app)
         .get("/cozinhas/buscar")
@@ -33,7 +38,10 @@ describe('Cozinha Controller', () => {
         .expect(res => {
             expect(res.body.message).toBe("Cozinhas carregadas com sucesso")
         })
-        .end(err => done(err))
+        .end(err => {
+            if (err) return done(err)
+            return done()
+        })  
     });
 
     test("POST /cozinhas/cadastrar", (done) => {
@@ -81,5 +89,32 @@ describe('Cozinha Controller', () => {
         .end(err => done(err))
     });
 
-    test("DELETE /cozinhas/deletar/:_id")
+    test("GET /cozinhas/buscar/:_id",(done) =>  {
+        request(app)
+        .get(`/cozinhas/buscar/${cozinhaMock.id}`)
+        .expect(200)
+        .expect(res => {
+            expect(res.body.message).toBe("Cozinha encontrada!")
+        })
+        .end(err => done(err))
+    })
+
+    test("Deve retornar 404 ao não encontrar uma cozinha no sistema", (done) => {
+        let fakeId = "637ebe6f4abffd2543edd9df"
+        request(app)
+        .get("/cozinhas/buscar/" + fakeId)
+        .expect(404)
+        .end(err => done(err))
+    })
+
+    test("DELETE /cozinhas/deletar/:id", (done) => {
+        request(app)
+        .delete(`/cozinhas/deletar/${cozinhaMock.id}`)
+        .expect(200)
+        .expect(res => {
+            expect(res.body.message).toBe("Cozinha removida do sistema!")
+        })
+        .end(err => done(err))
+    })
+
 });

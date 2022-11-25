@@ -8,7 +8,7 @@ const buscarTodasCozinhas = async(req, res) => {
         const buscarCozinhas = await CozinhaSchema.find()
         res.status(200).json({
             message: "Cozinhas carregadas com sucesso",
-            buscarCozinhas
+            cozinhas: buscarCozinhas
         })
 
     } catch (error) {
@@ -27,7 +27,10 @@ const buscarCozinhaPorId = async(req, res) => {
        
        if(encontrarCozinha == undefined) throw new Error("id não encontrado")
        
-       res.status(200).send(encontrarCozinha)
+       res.status(200).json({
+        message: "Cozinha encontrada!",
+        cozinha: encontrarCozinha
+       })
 
     } catch (error) {
         res.status(404).json({message: error.message})
@@ -100,7 +103,7 @@ const deletarCozinha = async(req, res) => {
         const deletarCozinha = await cozinha.delete()
 
         res.status(200).json({
-            "mensagem": "Cozinha removida do sistema!"
+            message: "Cozinha removida do sistema!"
         })
     } catch (error) {
         res.status(401).json({
