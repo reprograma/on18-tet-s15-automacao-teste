@@ -117,8 +117,11 @@ const atualizarPaciente = async (req, res) => {
 
 
 const buscarPacientePorId = async (req, res) => {
+
+    const id = req.params.id
+
     try {
-        const buscarPaciente = await PacienteSchema.findById(req.params.id)
+        const buscarPaciente = await PacienteSchema.findById(id)
 
         if (!buscarPaciente) {
             return res.status(404).json({
@@ -126,7 +129,9 @@ const buscarPacientePorId = async (req, res) => {
             })
         }
 
-        res.status(200).json(buscarPaciente)
+        res.status(200).json({
+            message: "Paciente encontrada",
+            buscarPaciente})
 
     } catch (error) {
         res.status(500).json({

@@ -11,6 +11,8 @@ describe("Paciente Controller", () => {
         endereco: "lua verde",
         plano_saude: true,
         plano_saude_numero: 6554
+
+        // só preciso colocar uma token para fazer um test de autenticação
     }
 
     beforeAll(async() => {
@@ -87,6 +89,17 @@ describe("Paciente Controller", () => {
     });
 
 
+    test('GET /pacientes/buscar/:id ', (done) => {
+        request(app)
+        .get(`/pacientes/buscar/${pacienteMock.id}`)
+        .expect(200)
+        .expect(res => {
+            expect(res.body.message).toBe("Paciente encontrada")
+        })
+        .end(err => done(err))
+    });
+
+
     test("DELETE /pacientes/deletar/:id", (done) => {
         request(app)
         .delete("/pacientes/deletar/" + pacienteMock.id)
@@ -95,17 +108,10 @@ describe("Paciente Controller", () => {
         
     });
 
-    test('GET /buscar/:id ', () => {
-        request(app)
-        .get("/pacientes/buscar/" + pacienteMock.id)
-        .expect(200)
-        .expect(res => {
-            expect(res.body.colaboradoras).toBe(pacienteMock)
-        })
-        .end()
-    });
 
-    test('Deve retornar um erro ao não encontrar uma paciente e um 404', () => {
+
+
+    test('Deve retornar um erro ao não encontrar uma paciente e um 404', (done) => {
         let idFake = "638114f070de5e77ffacdf86"
         request(app)
         .get("/pacientes/buscar/" + idFake)
@@ -113,6 +119,7 @@ describe("Paciente Controller", () => {
         .expect(res => {
             expect(res.body.message).toBe("Paciente não encontrada!")
         })
+        .end(err => done(err))
     });
 
 
