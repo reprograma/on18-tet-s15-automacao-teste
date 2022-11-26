@@ -3,10 +3,10 @@ const dotenv = require("dotenv")
 
 const loadEnv = () => {
   const env = dotenv.config({
-    path: path.resolve(process.env.PWD, '.env')
+    path: path.resolve(__dirname, '.env')
   })
 
-  if (env.error) throw error
+  if (env.err) throw err
   process.env = Object.assign(process.env, env.parsed)
 }
 
