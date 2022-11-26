@@ -1,4 +1,10 @@
 {
+gabriela
+  "dependencies": {
+    "jest": "^29.3.1"
+  },
+
+main
   "name": "introducao",
   "version": "1.0.0",
   "main": "calculadora.js",
@@ -8,9 +14,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+gabriela
+
   "dependencies": {
     "jest": "^29.3.1"
   },
+main
   "devDependencies": {},
   "description": ""
 }
