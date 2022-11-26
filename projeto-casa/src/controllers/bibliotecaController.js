@@ -8,32 +8,6 @@ const criarBiblioteca = async(requisicao, resposta) => {
       endereco: { cep, rua, numero, complemento, referencia, estado, cidade, bairro },
       bairros_atuantes, site, atividades_disponiveis, responsavel } = requisicao.body;
 
-  // //Regras de negócio: Respeitar o tipo de dado e preenchimento obrigatório;
-  // if (typeof (nome) !== 'string' || nome.trim() === "") {
-  //     return resposta.status(400).send({ Alerta: `A string nome é obrigatória` })
-  // } else if (typeof (cnpj) !== 'string') {
-  //     return resposta.status(400).send({ Alerta: `O número do CNPJ é obrigatório` })
-  // } else if (typeof (iniciativa_privada) !== 'boolean') {
-  //     return resposta.status(400).send({ Alerta: `Responda com true ou false` })
-  // } else if (typeof (cep) !== 'string' || cep.trim() === "") {
-  //     return resposta.status(400).send({ Alerta: `O número do CEP é obrigatório` })
-  // } else if (typeof (rua) !== 'string' || rua.trim() === "") {
-  //     return resposta.status(400).send({ Alerta: `A string rua é obrigatória` })
-  // } else if (typeof (numero) !== 'number') {
-  //     return resposta.status(400).send({ Alerta: `O número da residência é obrigatório` })
-  // } else if (typeof (complemento) !== 'string' || complemento.trim() === "") {
-  //     return resposta.status(400).send({ Alerta: `O complemento deve ser uma string` })
-  // } else if (typeof (referencia) !== 'string' || referencia.trim() === "") {
-  //     return resposta.status(400).send({ Alerta: `A referência deve ser uma string` })
-  // } else if (typeof (estado) !== 'string' || estado.trim() === "") {
-  //     return resposta.status(400).send({ Alerta: `A string estado é obrigatória` })
-  // } else if (typeof (cidade) !== 'string' || cidade.trim() === "") {
-  //     return resposta.status(400).send({ Alerta: `A string cidade é obrigatória` })
-  // } else if (typeof (bairro) !== 'string' || bairro.trim() === "") {
-  //     return resposta.status(400).send({ Alerta: `A string bairro é obrigatória` })
-  // } else if (typeof (responsavel) !== 'string' || responsavel.trim() === "") {
-  //     return resposta.status(400).send({ Alerta: `A string da pessoa responsável pela cozinha é obrigatória` })
-  // }
   try{
 
       //Regras de negócio: Não poderá existir bibliotecas com o mesmo cnpj
@@ -100,7 +74,7 @@ const buscarBibliotecas = async(req, res) => {
       res.status(200).json({
         statusCode: 200,
         message: 'Bibliotecas carregadas com sucesso!',
-        colaboradoras: allBibliotecas
+        biblioteca: allBibliotecas
       })
     } catch (error) {
       res.status(500).json({ 
@@ -222,7 +196,10 @@ const atualizarBiblioteca = async (request, response) => {
               })
           }
           
-      response.status(200).json(bibliotecaAtualizada)
+      response.status(200).json({
+        message: "Biblioteca atualizada com sucesso!",
+        biblioteca: bibliotecaAtualizada
+      })
 
  } catch (error){
       response.status(500).json({
@@ -235,7 +212,7 @@ const atualizarBiblioteca = async (request, response) => {
 const deletarBiblioteca = async (req, res) => {
 
   try {
-      const bibliotecas = await BibliotecaSchema.findById(req.params.id)
+      const bibliotecas = await BibliotecaSchema.findByIdAndDelete(req.params.id)
 
       await bibliotecas.delete()
 
