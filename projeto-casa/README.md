@@ -2,8 +2,12 @@
 
 ## Nome do Exercicio
 - 1. Copie um projeto de semanas anteriores ou crie uma API nova.
-- 2. Faça ao menos 5 testes end to end para a API
+- 2. Faça ao menos 3 testes  de controller da a API que seja end to end.
+
+indicacao: https://github.com/reprograma/on18-tet-s12-introducao-bd
+
 ---
+
 
 Terminou o exercício? Dá uma olhada nessa checklist e confere se tá tudo certinho, combinado?!
 

@@ -58,5 +58,5 @@ describe('Colaboradora Controller', () => {
         .end(err => done(err))
     })
 
-  });
+});
   

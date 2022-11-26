@@ -1,6 +1,7 @@
 // Dependencias
 const PokemonModels = require("../models/pokemonsModels");
 const bcrypt = require("bcrypt");
+const pokemonsModels = require("../models/pokemonsModels");
 
 //----------------------------------------//
 
@@ -60,7 +61,79 @@ const create = async(req, res) => {
     }
 }
 
+// encontra por id//
+const findById = async(req, res) => {
+    const id = req.params.id;
+
+    try {
+        const findPokemon = await pokemonsModels.findById(id);
+
+        if(!findPokemon) return res.status(404).json({
+            statusCode: 404,
+            message: `Pokemon ${id} not found`
+        })
+        res.status(200).json(findPokemon);
+    } 
+    catch (error) {
+        res.status(500).json({
+            statusCode: 500,
+            message: error.message
+        })
+    }
+}
+
+const filterByTrainerName = async(req, res) => {
+    const oT = req.querry.pokemonTrainerOt;
+
+    try {
+        const findPokemon = await pokemonsModels.find(oT);
+
+        if(!findPokemon) return res.status(404).json({
+            statusCode: 404,
+            message: `Pokemon com treinador ${oT} não encontrado!`
+        })
+        res.status(200).json(findPokemon);
+    } 
+    catch (error) {
+        res.status(500).json({
+            statusCode: 500,
+            message: error.message
+        })
+    }
+}
+
+//solta o pokemon "Deleta ele hehe"//
+const release = async(req, res) => {
+    const id = req.params;
+
+   try {
+    const findPokemon = await pokemonsModels.findById(id);
+
+    if(!findPokemon) return res.status(404).json({
+        statusCode: 404,
+        message: `Pokemon ${id} not found`
+    })
+
+    await findPokemon.delete();
+
+    return re.status(200).json({
+        statusCode: 200,
+        message: `Pokemon ${id} solto na naturesa "Dletado!" OwO`
+    });
+    
+   } catch (error) {
+    res.status(500).json({
+        statusCode: 500,
+        message: error.message
+    })
+    }
+}
+
 module.exports = {
     all,
-    create
+    create,
+    findById,
+    filterByTrainerName,
+    release
+
 }

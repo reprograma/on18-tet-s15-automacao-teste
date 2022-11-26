@@ -6,8 +6,12 @@ const express = require("express");
 const router = express.Router();
 
 //Rotas//
-router.get("/", controller.all)
+router.get("/", controller.all);
+router.get("/id:", controller.findById);
+router.get("/id:", controller.filterByTrainerName);
 
-router.post("/new", controller.create)
+router.post("/new", controller.create);
+
+router.delete("/release/:id", controller.release);
 
 module.exports = router;
