@@ -99,14 +99,6 @@ describe('Cozinha Controller', () => {
         .end(err => done(err))
     })
 
-    test("Deve retornar 404 ao não encontrar uma cozinha no sistema", (done) => {
-        let fakeId = "637ebe6f4abffd2543edd9df"
-        request(app)
-        .get("/cozinhas/buscar/" + fakeId)
-        .expect(404)
-        .end(err => done(err))
-    })
-
     test("DELETE /cozinhas/deletar/:id", (done) => {
         request(app)
         .delete(`/cozinhas/deletar/${cozinhaMock.id}`)
@@ -115,6 +107,14 @@ describe('Cozinha Controller', () => {
             expect(res.body.message).toBe("Cozinha removida do sistema!")
         })
         .end(err => done(err))
+        
+        test("Deve retornar 404 ao não encontrar uma cozinha no sistema", (done) => {
+            let fakeId = "637ebe6f4abffd2543edd9df"
+            request(app)
+            .get("/cozinhas/buscar/" + fakeId)
+            .expect(404)
+            .end(err => done(err))
+        })
     })
 
 });
