@@ -1,6 +1,6 @@
 {
-  "name": "para-sala",
-  "description": "## Nome do Exercicio",
+  "name": "parasala",
+  "description": "Nome do Exercicio",
   "version": "1.0.0",
   "main": "server.js",
   "keywords": [],
@@ -9,23 +9,36 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+<<<<<<< HEAD
     "test": "jest --forceExit"
 
+=======
+    "test" : "jest --forceExit --coverage"
+>>>>>>> a47f9d3ef6195d0c679fbd81dce9a72cf2a81277
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+<<<<<<< HEAD
     "mongoose": "^6.7.3"
+=======
+    "mongoose": "^6.7.2"
+>>>>>>> a47f9d3ef6195d0c679fbd81dce9a72cf2a81277
   },
   "devDependencies": {
     "jest": "^29.3.1",
     "nodemon": "^2.0.20",
     "supertest": "^6.3.1"
   },
+<<<<<<< HEAD
   "jest":{
     "setupFiles": [
+=======
+  "jest" : {
+    "setupFiles" : [
+>>>>>>> a47f9d3ef6195d0c679fbd81dce9a72cf2a81277
       "<rootDir>/src/test/jest.setup.js"
     ]
   }

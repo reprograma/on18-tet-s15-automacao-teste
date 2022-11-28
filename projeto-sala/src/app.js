@@ -15,4 +15,5 @@ app.use(cors())
 
 app.use('/colaboradoras', colaboradorasRoutes)
 
+
 module.exports = app

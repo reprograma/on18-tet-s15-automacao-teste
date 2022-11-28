@@ -11,5 +11,9 @@
   "dependencies": {
     "jest": "^29.3.1"
   },
+<<<<<<< HEAD
+=======
+  "devDependencies": {},
+>>>>>>> a47f9d3ef6195d0c679fbd81dce9a72cf2a81277
   "description": ""
 }
