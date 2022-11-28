@@ -50,18 +50,18 @@ plano_saude_numero:5871485962
 
 //testa paciente por id 200 ok
 test("GET /paciente/:id", (done) => {
-  fakeId='6384a46d1919d3d945e13a17'
+  fakeId='6384c61fd1ba6eb220940242'
     request(app)
     .get("/paciente/" + fakeId)
     .expect(200)
     .expect(response=>{
-      expect(response.body.Prezades).toBe(`Segue o paciente para este id [6384a46d1919d3d945e13a17]:`)})
+      expect(response.body.Prezades).toBe(`Segue o paciente para este id [6384c61fd1ba6eb220940242]:`)})
     .end(err => done(err))
   })
 
 // //testa paciente por id 404 ok
 test("GET /paciente/:id", (done) => {
-  fakeId= '6384a46d1919d3d945e13a52'
+  fakeId= '6384c61fd1ba6eb220940245'
     request(app)
     .get("/paciente/" + fakeId)
     .expect(404)
@@ -99,7 +99,7 @@ test("POST /paciente/", (done) => {
     telefone: "1234",
     endereco: "teste",
     plano_saude:"Unimed",
-    plano_saude_numero: 5855626262954985262629512
+    plano_saude_numero: 652629859885952
     }
 
     request(app)
@@ -116,7 +116,7 @@ test("POST /paciente/", (done) => {
 
 // // //testa atualizar paciente encontrado 200 ok
   test("PATCH /paciente/:id", (done) => {
-    fakeId = '6384a46d1919d3d945e13a17';
+    fakeId = '6384c61fd1ba6eb220940242';
     const pacienteBody = {
       nome: "Grazielle",
       telefone: "71997295879",
@@ -135,7 +135,7 @@ test("POST /paciente/", (done) => {
 
 // //   //testa atualizar paciente não encontrado 404 ok
 test("PATCH /paciente/:id", (done) => {
-  fakeId = '6384a46d1919d3d945e13a52';
+  fakeId = '6384c61fd1ba6eb220940245';
   const pacienteBody = {
     nome: "nome at",
     telefone: "telefone atualizado",
@@ -154,7 +154,7 @@ test("PATCH /paciente/:id", (done) => {
 
 // //   //testa delete 200 ok //modificar sempre o id, pois ele apaga
   test("DELETE /paciente/:id", (done) => {
-    fakeId = '6384a46d1919d3d945e13a17';
+    fakeId = '6384c61fd1ba6eb220940242';
     request(app)
     .delete("/paciente/" + fakeId)
     .expect(200)
@@ -165,7 +165,7 @@ test("PATCH /paciente/:id", (done) => {
 
  //testa delete 404 ok
  test("DELETE /paciente/:id", (done) => {
-  fakeId = '6384a4ce6d5b08816ce677d3';
+  fakeId = '6384c61fd1ba6eb220940245';
   request(app)
   .delete("/paciente/" + fakeId)
   .expect(404)

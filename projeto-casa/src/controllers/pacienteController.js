@@ -82,7 +82,7 @@ const criarPaciente = async (request, response) => {
     return response
       .status(401)
       .json({
-        message: `Não é possível cadastrar esse número de plano novamente.`,
+        message: `Não é possível cadastrar esse número de plano novamente.`
       });
   }
   try {
@@ -95,8 +95,7 @@ const criarPaciente = async (request, response) => {
     });
     const salvarPaciente = await paciente.save();
     response.status(200).json({
-      message: `Paciente cadastrado com sucesso`,
-      // paciente: salvarPaciente,
+      message: `Paciente cadastrado com sucesso`,salvarPaciente
     });
   } catch (error) {
     response.status(400).json({
@@ -172,8 +171,8 @@ const atualizarPaciente = async (request, response) => {
       });
     }
     response.status(200).send({ 
-      message:"Paciente atualizado com sucesso"
-        });//pacienteAtualizado 
+      message:"Paciente atualizado com sucesso",
+        pacienteAtualizado });
   } catch (error) {
     response.status(500).json({
       message: error.message,

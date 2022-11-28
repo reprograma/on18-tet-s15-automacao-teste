@@ -1,15 +1,18 @@
-require('dotenv').config()
-const express = require("express")
-const cors = require("cors")
-const app = express()
-const pacientesRotas = require("./routes/pacienteRoutes")
+const express = require('express');
+const app = express();
+const cors = require('cors');
 
-const database = require('./database/mongoConfig')
+require('dotenv').config();
 
-app.use(express.json())
-app.use(cors())
-app.use("/paciente", pacientesRotas)
-database.connect()
+const db = require('./database/mongoConfig');
+const pacienteRoutes = require('./routes/pacienteRoutes');
+const userRoutes = require('./routes/userRoutes')
 
+db.connect();
 
-module.exports = app
+app.use(cors());
+app.use(express.json());
+app.use("/paciente", pacienteRoutes);
+app.use("/users", userRoutes)
+
+module.exports = app;
