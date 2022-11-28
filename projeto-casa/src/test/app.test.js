@@ -25,7 +25,8 @@ plano_saude_numero:5871485962
      .get("/paciente/")
      .expect(200)
      .expect(response => {
-        expect(response.body.message).toBe("Encontramos 2 pacientes.")
+        expect(response.body.message).toContain("Encontramos")
+        expect(response.body.message).toContain("paciente")
      })
      .end(err => {
         if (err) return done(err)
@@ -34,40 +35,49 @@ plano_saude_numero:5871485962
   })
 
  //testa se o banco de dados está vazio 404 ok
-  test('GET /paciente/', (done) => {
-    request(app)
-    .get("/paciente/")
-    .expect(404)
-    .expect(response => {
-       expect(response.body.message).toBe("Não encontramos nenhum paciente até o momento.")
-    })
-    .end(err => {
-       if (err) return done(err)
-       return done()
-    })
- })
+//   test('GET /paciente/', (done) => {
+//     request(app)
+//     .get("/paciente/")
+//     .expect(404)
+//     .expect(response => {
+//        expect(response.body.message).toBe("Não encontramos nenhum paciente até o momento.")
+//     })
+//     .end(err => {
+//        if (err) return done(err)
+//        return done()
+//     })
+//  })
 
 //testa paciente por id 200 ok
 test("GET /paciente/:id", (done) => {
+  fakeId='6384a46d1919d3d945e13a17'
     request(app)
-    .get("/paciente/" + pacienteMock.id)
+    .get("/paciente/" + fakeId)
     .expect(200)
     .expect(response=>{
-      expect(response.body.Prezades).toBe(`Segue o paciente para este id [${pacienteMock.id}]:`)})
+      expect(response.body.Prezades).toBe(`Segue o paciente para este id [6384a46d1919d3d945e13a17]:`)})
     .end(err => done(err))
   })
 
-//testa paciente por id 404
-// falta 
+// //testa paciente por id 404 ok
+test("GET /paciente/:id", (done) => {
+  fakeId= '6384a46d1919d3d945e13a52'
+    request(app)
+    .get("/paciente/" + fakeId)
+    .expect(404)
+    .expect(response=>{
+      expect(response.body.Prezades).toBe(undefined)})
+    .end(err => done(err))
+  })
  
-//teste criar usuario com o mesmo numero de plano 401 ok
+// //teste criar usuario com o mesmo numero de plano 401 ok
   test("POST /paciente/", (done) => {
     const pacienteBody = {
-      nome: "Grazielle a boazuda",
-    telefone: "1234",
-    endereco: "teste",
-    plano_saude:"Unimed",
-    plano_saude_numero: 587148596274
+      nome:" Gre ",
+telefone:" 1234 ",
+endereco:" teste ",
+plano_saude:" Unimed ",
+plano_saude_numero:5871485962
     }
 
     request(app)
@@ -82,14 +92,14 @@ test("GET /paciente/:id", (done) => {
     })
   })
 
-//teste criar usuario 200 ok
+// //teste criar usuario 200 ok
 test("POST /paciente/", (done) => {
     const pacienteBody = {
       nome: "Grazielle",
     telefone: "1234",
     endereco: "teste",
     plano_saude:"Unimed",
-    plano_saude_numero: 5871485656226595
+    plano_saude_numero: 5855626262954985262629512
     }
 
     request(app)
@@ -104,17 +114,18 @@ test("POST /paciente/", (done) => {
     })
   })
 
-//testa atualizar paciente encontrado 200 ok
+// // //testa atualizar paciente encontrado 200 ok
   test("PATCH /paciente/:id", (done) => {
+    fakeId = '6384a46d1919d3d945e13a17';
     const pacienteBody = {
-      nome: "nome atualizado",
-      telefone: "telefone atualizado",
-      endereco: "teste",
-    plano_saude:"Unimed",
-    plano_saude_numero: 587148596274
+      nome: "Grazielle",
+      telefone: "71997295879",
+      endereco: "teste1",
+    plano_saude:"Bradesco",
+    plano_saude_numero: 5871485
     }
     request(app)
-    .patch("/paciente/" + pacienteMock.id)
+    .patch("/paciente/" + fakeId)
     .send(pacienteBody)
     .expect(200)
     .expect(response=>{
@@ -122,13 +133,30 @@ test("POST /paciente/", (done) => {
     .end(err => done(err))
   })
 
-  //testa atualizar paciente não encontrado 404
-  // falta 
+// //   //testa atualizar paciente não encontrado 404 ok
+test("PATCH /paciente/:id", (done) => {
+  fakeId = '6384a46d1919d3d945e13a52';
+  const pacienteBody = {
+    nome: "nome at",
+    telefone: "telefone atualizado",
+    endereco: "teste",
+  plano_saude:"Unimed",
+  plano_saude_numero: 5871485
+  }
+  request(app)
+  .patch("/paciente/" + fakeId)
+  .send(pacienteBody)
+  .expect(404)
+  .expect(response=>{
+    expect(response.body.message).toBe('O paciente não foi encontrado.')})
+  .end(err => done(err))
+})
 
-  //testa delete 200 ok
+// //   //testa delete 200 ok //modificar sempre o id, pois ele apaga
   test("DELETE /paciente/:id", (done) => {
+    fakeId = '6384a46d1919d3d945e13a17';
     request(app)
-    .delete("/paciente/" + pacienteMock.id)
+    .delete("/paciente/" + fakeId)
     .expect(200)
     .expect(response=>{
       expect(response.body.message).toBe("O paciente foi deletado com sucesso!")})
@@ -136,6 +164,14 @@ test("POST /paciente/", (done) => {
   })
 
  //testa delete 404 ok
- //falta 
+ test("DELETE /paciente/:id", (done) => {
+  fakeId = '6384a4ce6d5b08816ce677d3';
+  request(app)
+  .delete("/paciente/" + fakeId)
+  .expect(404)
+  .expect(response=>{
+    expect(response.body.message).toBe("O paciente não foi encontrado.")})
+  .end(err => done(err))
+})
 
 });
