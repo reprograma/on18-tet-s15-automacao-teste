@@ -90,6 +90,21 @@ describe( 'Paciente Controller' , () =>{
     })
 
     
+   
+
+    test('GET /paciente/buscarpaciente/:id', (done)=>{
+        request (app)
+        .get("/paciente/buscarpaciente/" + pacienteMock.id)
+        .expect(200)
+        .expect(res =>{
+            expect(res.body.message).toBe()
+        })
+        .end(err=>{
+            if (err) return done(err)
+            return done()
+        })
+    })
+
 
 
 
