@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "main": "server.js",
   "keywords": [],
-  "author": "",
+  "author": "natalia-salles",
   "license": "ISC",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "dev": "nodemon server.js",
     "test" : "jest --forceExit"
   },
