@@ -94,9 +94,4 @@ describe('Colaboradora Controller', () => {
       .expect(404)
       .end(err => done(err))
    })
-<<<<<<< HEAD
-});
-=======
-});
-
->>>>>>> a47f9d3ef6195d0c679fbd81dce9a72cf2a81277
+  })
