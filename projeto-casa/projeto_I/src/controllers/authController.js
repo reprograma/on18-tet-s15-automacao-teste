@@ -31,8 +31,10 @@ const login = (req, res) =>{
                 token
             })
         })
-    } catch (error) {
-        console.error(error)
+    } catch (err) {
+        response.status(500).send({
+            message: err.message,
+        })
     }
 }
 

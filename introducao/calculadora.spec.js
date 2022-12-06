@@ -1,6 +1,6 @@
 
 const calculadora = require("./calculadora")
-<<<<<<< HEAD
+
 
 
 
@@ -28,7 +28,7 @@ describe("Calculadora", () => {
         expect(resultado).toBe(15)
     })
 });
-=======
+
 describe("Calculadora", () => {
   test("true é igual a true", () => {
     expect(true).toBe(true)
@@ -52,4 +52,4 @@ describe("Calculadora", () => {
     expect(resultado).toBe(6)
   })
 })
->>>>>>> a47f9d3ef6195d0c679fbd81dce9a72cf2a81277
+

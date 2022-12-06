@@ -39,8 +39,11 @@ const bibliotecaSchema = new mongoose.Schema({
         cidade: String,
         bairro: String,
     },
-    bairro_atuantes: [],
-    site: [],
+    bairros_atuantes: [],
+    site:{
+        type: String,
+        required: false
+    } ,
     atividades_disponiveis: [],
     pessoa_responsavel: {
         type: String,

@@ -30,9 +30,9 @@ describe('Colaboradora Controller', () => {
         expect(res.body.message).toBe("Colaboradoras carregadas com sucesso!")
         expect(res.body.colaboradoras.length).toBe(1)
      })
-     .end(err => {
-        if (err) return done(err)
-        return done()
+     .end(error => {
+        if (error) return done(error)
+        return done() 
      })
   })
 
@@ -50,8 +50,8 @@ describe('Colaboradora Controller', () => {
     .expect(res => {
        expect(res.body.colaboradora.email).toBe("pri@email.com")
     })
-    .end(err => {
-       return done(err)
+    .end(error => {
+       return done(error)
     })
   })
 
@@ -70,21 +70,21 @@ describe('Colaboradora Controller', () => {
       expect(res.body.colaboradora.email).toBe("novoemail@email.com")
       expect(res.body.colaboradora.preferenceName).toBe("nome atualizado")
     })
-    .end(err => done(err))
+    .end(error => done(error))
   })
 
    test("GET /colaboradoras/:id", (done) => {
        request(app)
        .get(`/colaboradoras/${colaboradoraMock.id}`)
        .expect(200)
-       .end((err) => done(err))
+       .end((error) => done(error))
    })
 
    test("DELETE /colaboradoras/delete/:id", (done) => {
       request(app)
       .delete(`/colaboradoras/delete/${colaboradoraMock.id}`)
       .expect(200)
-      .end(err => done(err))
+      .end(error => done(error))
    })
 
    test("Deve retonar 404 ao não encontrar uma colaboradora", (done) => {
@@ -92,6 +92,6 @@ describe('Colaboradora Controller', () => {
       request(app)
       .get("/colaboradoras/" + fakeId)
       .expect(404)
-      .end(err => done(err))
+      .end(error => done(error))
    })
   })

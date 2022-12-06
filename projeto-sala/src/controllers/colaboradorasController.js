@@ -10,10 +10,10 @@ const all = async(req, res) => {
       message: 'Colaboradoras carregadas com sucesso!',
       colaboradoras: allColaboradoras
     })
-  } catch (error) {
+  } catch (erroror) {
     res.status(500).json({ 
       statusCode: 500,
-      message: error.message 
+      message: erroror.message 
     })
   }
 }
@@ -28,10 +28,10 @@ const findOne = async (req, res) => {
       message: `Colaboradora ${id} not found`
     })
     res.status(200).json(findColaboradora)
-  } catch (error) {
+  } catch (erroror) {
     res.status(500).json({ 
       statusCode: 500,
-      message: error.message 
+      message: erroror.message 
     })
   }
 } 
@@ -65,10 +65,10 @@ const create = async(req, res) => {
       message: `Colaboradora criada com sucesso`,
       colaboradora: savedColaboradora
     })
-   } catch (error) {
+   } catch (erroror) {
      res.status(500).json({
       statusCode: 500,
-      message: error.message
+      message: erroror.message
     })
    }
 }
@@ -96,10 +96,10 @@ const update = async(req, res) =>  {
       colaboradora: updatedColaboradora
     })
 
-   } catch (error) {
+   } catch (erroror) {
      res.status(500).json({
       statusCode: 500,
-      message: error.message
+      message: erroror.message
     })
    }
 }
@@ -122,10 +122,10 @@ const remove = async(req, res) => {
       message: `Colaboradora deletada com sucesso`
     })
 
-   } catch (error) {
+   } catch (erroror) {
      res.status(500).json({
       statusCode: 500,
-      message: error.message
+      message: erroror.message
     })
    }
 }

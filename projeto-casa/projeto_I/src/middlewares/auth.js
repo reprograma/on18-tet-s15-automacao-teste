@@ -16,21 +16,21 @@ console.log("token", token)
 
 if(!token){
     return res.status(401).send({
-        message: "erro no token "
+        message: "error no token "
     })
 }
 
 try {
-    jwt.verify(token, SECRET, (err) =>{
-        if(err){
-            return res.status(401).sen({
+    jwt.verify(token, SECRET, (error) =>{
+        if(error){
+            return res.status(401).send({
                 message: "Não autorizado"
             })
         }
         next();
     })
 } catch (error) {
-    console.error(err)
+    console.error(error)
 }
 
 }

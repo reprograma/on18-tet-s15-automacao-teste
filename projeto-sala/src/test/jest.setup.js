@@ -6,7 +6,7 @@ const loadEnv = () => {
     path: path.resolve(process.env.PWD, '.env')
   })
 
-  if (env.err) throw err
+  if (env.error) throw error
   process.env = Object.assign(process.env, env.parsed)
 }
 

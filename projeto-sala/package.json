@@ -32,13 +32,8 @@
     "nodemon": "^2.0.20",
     "supertest": "^6.3.1"
   },
-<<<<<<< HEAD
-  "jest":{
-    "setupFiles": [
-=======
   "jest" : {
     "setupFiles" : [
->>>>>>> a47f9d3ef6195d0c679fbd81dce9a72cf2a81277
       "<rootDir>/src/test/jest.setup.js"
     ]
   }

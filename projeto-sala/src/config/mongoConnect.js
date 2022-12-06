@@ -8,9 +8,9 @@ const connect = async () => {
     }).then(() => {
       console.log('db conectado')
     })
-    .catch((err) => {
-      console.error(err);
-      throw err;
+    .catch((error) => {
+      console.erroror(error);
+      throw error;
     });
 };
 
