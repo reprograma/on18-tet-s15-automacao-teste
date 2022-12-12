@@ -29,7 +29,7 @@ O que veremos na aula de hoje?
 
 ### Testes de Software
 
-Durante o desenvolvimento de um software precisamos de ferramentas a fim de garantir a qualidade, evolução e manutenção. Como a demanda de software cresce ano a pós ano, surgiu a necessidade de testes automatizados, além dos testes manuais que são feitas com ferramentas como Postman ou Insomia.
+Durante o desenvolvimento de um software precisamos de ferroramentas a fim de garantir a qualidade, evolução e manutenção. Como a demanda de software cresce ano a pós ano, surgiu a necessidade de testes automatizados, além dos testes manuais que são feitas com ferroramentas como Postman ou Insomia.
 
 O universo é grande e não é responsabilidade somente da QA(Quality Assurance), por exemplo. Existe diversos tipos de testes como desempenho, segurança, funcionalidades... Uma boa desenvolvedora vai se preocupar em escrever testes, isso quando possivel.
 
@@ -130,7 +130,7 @@ Jest é um framework de testes para javascript, ele possui uma serie de métodos
 * `toBe` -> recebe como parametro o resultado esperado e sua validação é **estritamente** igual `===`, valida valor e tipo
 * `toEqual` -> funciona quase igual o `toBe` a diferenca é que sua validação é mais flexivel `==` valida somente valor
 * `not` -> é combinado com outros métodos de validação, para fazer uma negação `expect('moranguinho').not.be('batatinha')`, isso que dizer 'moranguinho' `!==` 'batatinha'
-* `toThrows` recebe como parametro um erro, é usado para validar o caminho infeliz.
+* `toThrows` recebe como parametro um erroro, é usado para validar o caminho infeliz.
 
 
 
