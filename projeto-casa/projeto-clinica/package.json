@@ -1,10 +1,10 @@
 {
-  "name": "projeto-clinica",
+  "name": "projeto-clinica-teste",
   "version": "1.0.0",
   "description": "",
   "main": "serve.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
